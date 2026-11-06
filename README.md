@@ -2,6 +2,8 @@
 
 A Quarto HTML book starter for lecture and research notes. It uses Cosmo with Spectral typography, a chapter sidebar, an on-page table of contents, and styles for numbered results and proofs. [See the layout in use](https://chennoshen239.github.io/game-theory-notes/01-introduction.html)
 
+![Rendered example with a chapter sidebar, equations, and styled theorem and proof blocks](example-preview.png)
+
 ## Start a book
 
 Install Quarto, then create an empty directory for your notes. [Download Quarto](https://quarto.org/docs/get-started/)
