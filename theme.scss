@@ -1,0 +1,363 @@
+/*-- scss:defaults --*/
+// Match the homepage typography.
+$font-family-serif:      'Spectral', Georgia, 'Times New Roman', serif !default;
+$font-family-sans-serif: 'Spectral', Georgia, 'Times New Roman', serif !default;
+$font-family-base:       'Spectral', Georgia, 'Times New Roman', serif !default;
+$font-family-monospace:  'SFMono-Regular', 'JetBrains Mono', Menlo, Consolas, monospace !default;
+$headings-font-family:   'Spectral', Georgia, 'Times New Roman', serif !default;
+
+// Type scale
+$font-size-root:     18px;
+$line-height-base:   1.6;
+$headings-font-weight: 400;
+$headings-line-height: 1.25;
+
+// Palette (homepage tokens)
+$body-bg:            #ffffff;
+$body-color:         #2a2f38;          // --text
+$link-color:         #e0112b;          // --red
+$link-hover-color:   #e0112b;          // --red-2
+$border-color:       rgba(22,24,29,.12);
+$primary:            #e0112b;
+
+// Code
+$code-color:         #e0112b;
+$code-bg:            rgba(22,24,29,.045);
+$code-block-bg:      #fbfafa;
+
+// Table of contents
+$toc-color:          #4f5763;
+$toc-active-border:  #e0112b;
+$toc-font-size:      0.82rem;
+
+/*-- scss:rules --*/
+/* CSS custom properties live in assets/custom.css (plain CSS) so Quarto's
+   SCSS css-vars step doesn't choke on the cubic-bezier / font-stack values. */
+/* hidden MathJax macro-definition block (Pandoc still extracts the \newcommands) */
+.mathdefs {
+  display: none !important;
+}
+
+body {
+  font-family: var(--body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+::selection {
+  background: var(--red);
+  color: #fff;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6,
+.quarto-title-block .title,
+#title-block-header .title {
+  font-family: var(--sans);
+  color: var(--ink);
+  letter-spacing: normal;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+h1, .quarto-title-block .title {
+  font-size: 34px;
+  letter-spacing: normal;
+  line-height: 1.25;
+  font-weight: 400;
+}
+
+.content h2 {
+  font-weight: 400;
+  font-size: 22px;
+  margin-top: 1.8rem;
+  margin-bottom: 1rem;
+  letter-spacing: normal;
+}
+
+.content h3 {
+  font-weight: 400;
+  font-size: 20px;
+  margin-top: 1.4rem;
+  margin-bottom: 0.7rem;
+  letter-spacing: normal;
+}
+
+.content h4 {
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--ink);
+  text-transform: none;
+}
+
+/* chapter title block: an "eyebrow" feel + generous space */
+#title-block-header {
+  margin-bottom: 1.4rem;
+}
+
+.quarto-title-block .title {
+  font-size: 34px;
+}
+
+/* ---------- body prose ---------- */
+.content p, .content li {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.content {
+  max-width: 46rem;
+} /* comfortable reading measure */
+.content .quarto-figure, .content figure {
+  max-width: none;
+}
+
+main em {
+  font-style: italic;
+}
+
+main strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* Links */
+.content a:not(.quarto-secondary-nav-toggle):not(.nav-link) {
+  color: var(--red);
+  border-bottom: 0;
+  text-decoration: none;
+  transition: color 0.18s var(--ease), border-color 0.18s var(--ease);
+}
+
+.content a:hover {
+  color: var(--red);
+  text-decoration: underline;
+}
+
+/* cross-reference links (Theorem 3.6, Figure 4.1 …) in red, no underline */
+.content a.quarto-xref {
+  color: var(--red);
+  border-bottom: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.content a.quarto-xref:hover {
+  text-decoration: underline;
+}
+
+/* Mathematical environments */
+.theorem {
+  background: none;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  margin: 24px 0;
+}
+
+.theorem-title, .proof-title {
+  font-family: var(--body);
+  font-weight: 600;
+  letter-spacing: normal;
+  color: var(--ink);
+}
+
+.theorem .theorem-title strong {
+  color: var(--ink);
+}
+
+.theorem p:last-child {
+  margin-bottom: 0;
+}
+
+.proof {
+  margin: 14px 0 22px;
+  padding: 0;
+  border: 0;
+}
+
+.proof .proof-title {
+  font-family: var(--body);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--ink);
+}
+
+/* Keep callout labels and disclosure controls. */
+div.callout.callout-style-default, div.callout.callout-style-simple {
+  background: none;
+  border: 0;
+  border-radius: 0;
+  margin: 24px 0;
+  padding: 0;
+}
+
+div.callout.callout-style-default > .callout-header {
+  background: none !important;
+  padding: 0;
+  font-family: var(--body);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+div.callout .callout-body {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+div.callout .callout-icon {
+  filter: grayscale(1);
+}
+
+/* ---------- blockquotes (e.g. the von Neumann–Morgenstern quote) ---------- */
+.content blockquote {
+  border-left: 1px solid var(--line);
+  background: none;
+  margin: 22px 0;
+  padding: 14px 22px;
+  font-style: italic;
+  color: var(--ink);
+}
+
+/* Tables */
+.content table {
+  font-size: 0.98rem;
+}
+
+.content thead th {
+  font-family: var(--sans);
+  font-weight: 600;
+  color: var(--ink);
+  border-bottom: 2px solid var(--line-2) !important;
+  letter-spacing: -0.01em;
+}
+
+.content tbody td, .content tbody th {
+  border-color: var(--line) !important;
+}
+
+.content table caption, .content .figure-caption, .content figcaption {
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  color: var(--muted);
+  letter-spacing: 0.005em;
+}
+
+/* ---------- figures ---------- */
+.content figure img, .content .quarto-figure img {
+  margin-inline: auto;
+}
+
+/* ---------- code ---------- */
+code:not(.sourceCode) {
+  color: var(--ink);
+  background: var(--code-bg);
+  padding: 0.08em 0.35em;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+div.sourceCode, pre.text {
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+
+/* ---------- left sidebar (book navigation) ---------- */
+#quarto-sidebar {
+  border-right: 1px solid var(--line);
+}
+
+.sidebar-navigation .sidebar-item-text, .sidebar nav[role=doc-toc] ul > li > a {
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  color: var(--muted);
+  letter-spacing: 0.005em;
+}
+
+.sidebar-navigation .sidebar-item .sidebar-item-text:hover {
+  color: var(--ink);
+}
+
+.sidebar-navigation .sidebar-link.active,
+.sidebar-navigation .sidebar-item-text.active {
+  color: var(--red) !important;
+  font-weight: 600;
+}
+
+.sidebar-title {
+  font-family: var(--sans);
+  font-weight: 400;
+  letter-spacing: normal;
+  color: var(--ink);
+}
+
+.sidebar .sidebar-item-toggle .bi {
+  color: var(--muted);
+}
+
+/* ---------- right TOC ("On this page") ---------- */
+nav#TOC .toc-actions, nav[role=doc-toc] > h2, #toc-title {
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  font-weight: 400;
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--muted);
+}
+
+nav[role=doc-toc] ul > li > a {
+  border-left: 1px solid var(--line);
+}
+
+nav[role=doc-toc] ul > li > a.active {
+  color: var(--red) !important;
+  border-left-color: var(--red) !important;
+  font-weight: 600;
+}
+
+/* ---------- top navbar (book title bar) ---------- */
+.navbar {
+  border-bottom: 1px solid var(--line);
+  background: #fff !important;
+}
+
+.navbar-brand, .navbar .quarto-secondary-nav .quarto-btn-toggle {
+  font-family: var(--sans);
+  font-weight: 400;
+  letter-spacing: normal;
+  color: var(--ink) !important;
+}
+
+.navbar .nav-link {
+  font-family: var(--sans);
+  color: var(--muted) !important;
+}
+
+.navbar .nav-link:hover {
+  color: var(--ink) !important;
+}
+
+/* page navigation (prev/next) + footer */
+.page-navigation .nav-page a {
+  font-family: var(--sans);
+  color: var(--muted);
+}
+
+.page-navigation .nav-page a:hover {
+  color: var(--red);
+}
+
+.nav-footer {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+}
+
+/* tighten chapter-number prefix in titles */
+.chapter-number {
+  color: var(--ink);
+  font-weight: 400;
+}

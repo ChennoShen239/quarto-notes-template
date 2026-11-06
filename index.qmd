@@ -1,0 +1,5 @@
+# Preface {.unnumbered}
+
+Use this page to introduce your notes and describe what readers should know before starting.
+
+The sample chapter shows a numbered definition and theorem, a proof, and cross-references. See the [worked example](01-example.qmd).

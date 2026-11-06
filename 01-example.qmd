@@ -1,0 +1,27 @@
+# A worked example
+
+## Strict convexity
+
+::: {#def-strict-convexity}
+A function $f$ on an interval is strictly convex if for any distinct $x$ and $y$ in the interval and any $\lambda \in (0,1)$,
+$$
+f(\lambda x + (1-\lambda)y) < \lambda f(x) + (1-\lambda)f(y).
+$$
+:::
+
+::: {#thm-quadratic}
+The function $f(x)=x^2$ is strictly convex on $\mathbb{R}$.
+:::
+
+::: {.proof}
+For $x \ne y$ and $\lambda \in (0,1)$,
+$$
+\lambda x^2 + (1-\lambda)y^2 - (\lambda x + (1-\lambda)y)^2
+= \lambda(1-\lambda)(x-y)^2 > 0.
+$$
+This is the inequality in @def-strict-convexity.
+:::
+
+::: {.callout-tip title="Example"}
+By @thm-quadratic, squaring the average of two distinct numbers gives less than the average of their squares. For $1$ and $3$, the two quantities are $4$ and $5$.
+:::

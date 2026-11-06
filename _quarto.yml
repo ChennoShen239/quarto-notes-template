@@ -1,0 +1,42 @@
+project:
+  type: book
+  output-dir: _book
+  resources:
+    - assets/fonts/**
+
+book:
+  title: "Course Notes"
+  author: "Your name"
+  search: true
+  page-navigation: true
+  sidebar:
+    style: docked
+    collapse-level: 1
+  chapters:
+    - index.qmd
+    - 01-example.qmd
+
+format:
+  html:
+    theme:
+      - cosmo
+      - theme.scss
+    css:
+      - assets/fonts.css
+      - assets/custom.css
+    toc: true
+    toc-depth: 3
+    toc-title: "On this page"
+    number-sections: true
+    number-depth: 2
+    html-math-method: mathjax
+    fig-align: center
+    fig-cap-location: bottom
+    tbl-cap-location: top
+    code-tools: false
+    link-external-newwindow: true
+    smooth-scroll: true
+    grid:
+      sidebar-width: 280px
+      body-width: 820px
+      margin-width: 260px
